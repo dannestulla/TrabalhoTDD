@@ -33,7 +33,7 @@
     Quando um usuário alterar os dados da máquina "Máquina 1", por exemplo, mudando seu nome para "Máquina A"
     Então os dados da máquina devem ser atualizados no sistema, e a máquina "Máquina A" deverá estar registrada com ID "001".
 
-## **Lista de Tarefas a Implementar**
+## Lista de Tarefas a Implementar**
 Sistema de Cadastro de Máquinas
 1.0 Criar uma classe para representar máquinas.
 
@@ -46,6 +46,9 @@ Sistema de Cadastro de Máquinas
 1.4 Criar metodo para listar todas maquinas cadastradas 
 
 1.5 Criar método para alterar dados de uma máquina
+
+## ** Diagrama de caso de uso
+<img width="677" alt="image" src="https://github.com/user-attachments/assets/5dbac6a8-7192-4926-80cd-b067e9717b67">
 
 
 

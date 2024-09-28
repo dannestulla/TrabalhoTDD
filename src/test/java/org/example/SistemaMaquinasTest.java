@@ -1,10 +1,10 @@
 package org.example;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
 
 public class SistemaMaquinasTest {
@@ -23,8 +23,8 @@ public class SistemaMaquinasTest {
     static Maquina maquina1;
     static Maquina maquina2;
 
-    @BeforeAll
-    static void setUp() {
+    @BeforeEach
+    void setUp() {
         sistemaMaquinas = Mockito.spy(new SistemaMaquinas());
         maquina1 = new Maquina("Maquina 1", 1L);
         maquina2 = new Maquina("Maquina 2", 2L);
@@ -40,6 +40,7 @@ public class SistemaMaquinasTest {
     
     @Test
     void testRemoverMaquina(){
+
         sistemaMaquinas.cadastrarMaquina(maquina1);
         sistemaMaquinas.removerMaquina(maquina1);
 
@@ -51,6 +52,7 @@ public class SistemaMaquinasTest {
 
     @Test
     void testConsultarUmaMaquina(){
+
         sistemaMaquinas.cadastrarMaquina(maquina1);
 
         var maquina1Consultada = sistemaMaquinas.consultarMaquina(maquina1);
@@ -62,6 +64,7 @@ public class SistemaMaquinasTest {
 
     @Test
     void testListarMaquinasCadastradas(){
+
         sistemaMaquinas.cadastrarMaquina(maquina1);
         sistemaMaquinas.cadastrarMaquina(maquina2);
 
@@ -74,15 +77,19 @@ public class SistemaMaquinasTest {
 
     @Test
     void testAlterarMaquina(){
+
         String novoNome = "Maquina 123";
         sistemaMaquinas.cadastrarMaquina(maquina1);
 
         sistemaMaquinas.alterarMaquina(maquina1.getId(), novoNome);
 
-        assertEquals(novoNome, sistemaMaquinas.getMaquina(maquina1).getName());
+        assertEquals(novoNome, sistemaMaquinas.consultarMaquina(maquina1).getName());
         verify(sistemaMaquinas).alterarMaquina(maquina1.getId(), novoNome);
 
     }
 
-
+    @AfterEach
+    void clear() {
+        reset();
+    }
 }

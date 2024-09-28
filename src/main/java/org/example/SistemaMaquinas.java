@@ -11,7 +11,7 @@ public class SistemaMaquinas {
     private List<Maquina> listaMaquinas;
 
     public void cadastrarMaquina(Maquina maquina) {
-        if (maquina != null){
+        if (maquina == null){
             throw new IllegalArgumentException("A máquina não pode ser nula");
         }
         listaMaquinas.add(maquina);

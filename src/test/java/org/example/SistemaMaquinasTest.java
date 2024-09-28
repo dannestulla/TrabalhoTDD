@@ -4,8 +4,7 @@ import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.reset;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class SistemaMaquinasTest {
 
@@ -40,7 +39,6 @@ public class SistemaMaquinasTest {
     
     @Test
     void testRemoverMaquina(){
-
         sistemaMaquinas.cadastrarMaquina(maquina1);
         sistemaMaquinas.removerMaquina(maquina1);
 
@@ -52,7 +50,6 @@ public class SistemaMaquinasTest {
 
     @Test
     void testConsultarUmaMaquina(){
-
         sistemaMaquinas.cadastrarMaquina(maquina1);
 
         var maquina1Consultada = sistemaMaquinas.consultarMaquina(maquina1);
@@ -64,7 +61,6 @@ public class SistemaMaquinasTest {
 
     @Test
     void testListarMaquinasCadastradas(){
-
         sistemaMaquinas.cadastrarMaquina(maquina1);
         sistemaMaquinas.cadastrarMaquina(maquina2);
 
@@ -77,7 +73,6 @@ public class SistemaMaquinasTest {
 
     @Test
     void testAlterarMaquina(){
-
         String novoNome = "Maquina 123";
         sistemaMaquinas.cadastrarMaquina(maquina1);
 
@@ -85,6 +80,8 @@ public class SistemaMaquinasTest {
 
         assertEquals(novoNome, sistemaMaquinas.consultarMaquina(maquina1).getName());
         verify(sistemaMaquinas).alterarMaquina(maquina1.getId(), novoNome);
+
+        //verify(sistemaMaquinas, times(2)).alterarMaquina(maquina1.getId(), novoNome);
 
     }
 

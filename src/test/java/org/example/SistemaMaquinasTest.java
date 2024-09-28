@@ -77,10 +77,10 @@ public class SistemaMaquinasTest {
         String novoNome = "Maquina 123";
         sistemaMaquinas.cadastrarMaquina(maquina1);
 
-        sistemaMaquinas.alterarMaquina(1L, novoNome);
+        sistemaMaquinas.alterarMaquina(maquina1.getId(), novoNome);
 
-        assertEquals(novoNome, maquina1.getName());
-        verify(sistemaMaquinas).alterarMaquina(1L, novoNome);
+        assertEquals(novoNome, sistemaMaquinas.getMaquina(maquina1).getName());
+        verify(sistemaMaquinas).alterarMaquina(maquina1.getId(), novoNome);
 
     }
 
